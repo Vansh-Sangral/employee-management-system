@@ -11,7 +11,7 @@ const emptyForm = {
   joiningDate: '',
   status: 'Active'
 };
-
+const API_URL = 'https://employee-management-system-6j7p.onrender.com/api/employees';
 const App = () => {
   const [stats, setStats] = useState({ totalEmployees: 0, activeEmployees: 0, inactiveEmployees: 0 });
   const [employees, setEmployees] = useState([]);
@@ -77,12 +77,12 @@ const handleChange = (event) => {
   try {
     if (editingId) {
       await axios.put(
-        `http://localhost:5000/api/employees/${editingId}`,
+        `https://employee-management-system-6j7p.onrender.com/api/employees/${editingId}`,  
         form
       );
     } else {
       await axios.post(
-        'http://localhost:5000/api/employees',
+        'https://employee-management-system-6j7p.onrender.com/api/employees',
         form
       );
     }
@@ -104,7 +104,7 @@ const handleChange = (event) => {
 
   const handleDelete = async (id) => {
     console.log("DELETE ID:",id);
-    await axios.delete(`http://localhost:5000/api/employees/${id}`);
+    await axios.delete(`https://employee-management-system-6j7p.onrender.com/api/employees/${id}`);
     fetchData();
   };
 
