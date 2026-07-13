@@ -46,25 +46,56 @@ const App = () => {
   useEffect(() => {
     fetchData();
   }, []);
+const handleChange = (event) => {
+  const { name, value } = event.target;
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setForm((current) => ({ ...current, [name]: value }));
-  };
-
+  setForm((current) => ({
+    ...current,
+    [name]: value
+  }));
+};
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log("editingId:", editingId);
+  event.preventDefault();
+
+  const phoneRegex = /^[0-9]{10}$/;
+
+  if (!phoneRegex.test(form.mobileNumber)) {
+    alert("Mobile number must be exactly 10 digits");
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(form.email)) {
+    alert("Please enter a valid email address");
+    return;
+  }
+
+  console.log("editingId:", editingId);
   console.log("form:", form);
+
+  try {
     if (editingId) {
-      await axios.put(`http://localhost:5000/api/employees/${editingId}`, form);
+      await axios.put(
+        `http://localhost:5000/api/employees/${editingId}`,
+        form
+      );
     } else {
-      await axios.post('http://localhost:5000/api/employees', form);
+      await axios.post(
+        'http://localhost:5000/api/employees',
+        form
+      );
     }
+
     setForm(emptyForm);
     setEditingId(null);
     fetchData();
-  };
+
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong");
+  }
+};
 
   const handleEdit = (employee) => {
     setEditingId(employee._id || employee.id);
@@ -115,8 +146,24 @@ const App = () => {
             </label>
             <label>
               Mobile Number
-              <input name="mobileNumber" value={form.mobileNumber} onChange={handleChange} required />
-            </label>
+              <input
+  name="mobileNumber"
+  value={form.mobileNumber}
+  onChange={(e) => {
+    const value = e.target.value;
+
+    // only numbers allow
+    if (/^\d*$/.test(value)) {
+      setForm((current) => ({
+        ...current,
+        mobileNumber: value
+      }));
+    }
+  }}
+  maxLength="10"
+  required
+/>
+</label>
             <label>
               Department
               <input name="department" value={form.department} onChange={handleChange} required />
