@@ -22,8 +22,8 @@ const App = () => {
   const [statusFilter, setStatusFilter] = useState("");
   const fetchData = async () => {
     const [statsResponse, employeesResponse] = await Promise.all([
-      axios.get('http://localhost:5000/api/employees/dashboard'),
-      axios.get('http://localhost:5000/api/employees')
+      axios.get('https://employee-management-system-6j7p.onrender.com/api/employees/dashboard'),
+      axios.get('https://employee-management-system-6j7p.onrender.com/api/employees')
     ]);
     setStats(statsResponse.data);
     setEmployees(employeesResponse.data);
