@@ -243,7 +243,7 @@ const handleChange = (event) => {
                 <th>Email</th>
               <th>Mobile</th>
                <th>Department</th>
-              <th>Designation</th>
+              
               <th>Joining Date</th>
                 <th>Department</th>
                 <th>Status</th>
@@ -257,7 +257,7 @@ const handleChange = (event) => {
                   <td>{employee.email}</td>
                   <td>{employee.mobileNumber}</td>
                     
-                <td>{employee.designation}</td>
+                
                   <td>{employee.joiningDate}</td>
                   <td>{employee.department}</td>
                   <td>{employee.status}</td>
