@@ -166,7 +166,16 @@ const handleChange = (event) => {
 </label>
             <label>
               Department
-              <input name="department" value={form.department} onChange={handleChange} required />
+              <select name="department" value={form.department} onChange={handleChange} required><option value="">Select Department</option>
+    <option value="IT">IT</option>
+    <option value="HR">HR</option>
+    <option value="Finance">Finance</option>
+    <option value="Marketing">Marketing</option>
+    <option value="Sales">Sales</option>
+    <option value="Operations">Operations</option>
+    <option value="Customer Support">Customer Support</option>
+    <option value="Engineering">Engineering</option>
+    <option value="Administration">Administration</option></select> 
             </label>
             <label>
               Designation
