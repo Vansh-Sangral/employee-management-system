@@ -149,3 +149,14 @@ tbody tr:hover {
   display: flex;
   gap: 8px;
 }
+.actions button:first-child {
+  background: #ffffff;
+  color: #1e293b;
+  border: 2px solid #1e293b;
+  font-weight: 600;
+}
+
+.actions button:first-child:hover {
+  background: #1e293b;
+  color: white;
+}
