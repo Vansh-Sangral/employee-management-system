@@ -240,6 +240,11 @@ const handleChange = (event) => {
             <thead>
               <tr>
                 <th>Name</th>
+                <th>Email</th>
+              <th>Mobile</th>
+               <th>Department</th>
+              <th>Designation</th>
+              <th>Joining Date</th>
                 <th>Department</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -249,6 +254,11 @@ const handleChange = (event) => {
               {filteredEmployees.map((employee) => (
                 <tr key={employee._id || employee.id}>
                   <td>{employee.fullName}</td>
+                  <td>{employee.email}</td>
+                  <td>{employee.mobileNumber}</td>
+                    
+                <td>{employee.designation}</td>
+                  <td>{employee.joiningDate}</td>
                   <td>{employee.department}</td>
                   <td>{employee.status}</td>
                   <td>
